@@ -19,25 +19,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="C_Forward_List_Macro.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="Generic_Cir_List.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="Generic_Forward_List.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="Generic_List.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="Main Testing.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Polish_Notation.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="Recursive_Forward_List.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Second Testing.c">
@@ -45,6 +30,12 @@
 			<Option compile="0" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="src/C_Forward_List_Macro.h" />
+		<Unit filename="src/Generic_Cir_List.h" />
+		<Unit filename="src/Generic_Forward_List.h" />
+		<Unit filename="src/Generic_Forward_List2.h" />
+		<Unit filename="src/Generic_List.h" />
+		<Unit filename="src/Recursive_Forward_List.h" />
 		<Unit filename="stack.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
