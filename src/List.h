@@ -1,14 +1,14 @@
-#ifndef GENERIC_CIR_LIST_H_INCLUDED
-#define GENERIC_CIR_LIST_H_INCLUDED
+#ifndef LIST_H_INCLUDED
+#define LIST_H_INCLUDED
+
 #include <stdlib.h>
 #include<stdio.h>
-typedef int T;
+typedef float T;
 void printFunc(T val){
-    printf("%d", val);
+    printf("%.2f", val);
 }
-
 struct node{
-    T val;//you may change the T type and change the parameter of functions below accordingly
+    T val;//you may change the char type and change the parameter of functions below accordingly
     struct node* next;
     struct node* back;
 };
@@ -16,12 +16,13 @@ typedef struct node node;
 typedef struct node* nodePtr;
 int getLen(node *li); //optional but easy
 node* getNode(node *li, int pos);
-node* getEndNode(node *li);///trivial for circular double linked list
+node* getEndNode(node *li);
 void printNode(node *li);
+void printNodeBack(node *li);
 void pushFront(node **li, T val);
 void pushBack(node **li, T val);
-T popFront(node **li);//you may change the T to void so that it doesn't return anything
-T popBack(node **li);//you may change the T to void so that it doesn't return anything
+T popFront(node **li);//you may change the char to void so that it doesn't return anything
+T popBack(node **li);//you may change the char to void so that it doesn't return anything
 void insertion(node **li, int pos, T val);
 void insertionAfter(node **li, int pos, T val); //optional
 void deletion(node **li, int pos);
@@ -30,11 +31,9 @@ void deletion(node **li, int pos);
 int getLen(node *li){
     node *curr = li;
     int len = 0;
-    if(curr != NULL){
-        do{
-            curr = curr->next;
-            ++len;
-        }while(curr != li);
+    while(curr != NULL){
+        curr = curr->next;
+        ++len;
     }
     return len;
 }
@@ -44,126 +43,98 @@ node* getNode(node *li, int pos){
             printf("\nNo Negative Bound");
             exit(EXIT_FAILURE);
     }
-    else if(pos == 0)
-        return li;
-    else{
-        int i = 0;
-        do{
-            curr = curr->next;
-            ++i;
-        }while(i < pos && curr != li);
-        if(curr == li){
-                printf("\nout of bound!");
-                exit(EXIT_FAILURE);
-        }
-        return curr;
+    int i = 0;
+    while(i < pos && !(curr == NULL)){
+        curr = curr->next;
+        ++i;
     }
+    if(curr == NULL){
+            printf("\nout of bound!");
+            exit(EXIT_FAILURE);
+    }
+    return curr;
 }
 node* getEndNode(node *li){
     if(li == NULL)
         return NULL;
-    return li->back;
+    node *curr = li;
+    while(curr->next != NULL)
+        curr = curr->next;
+    return curr;
 };
+void printNodeRecur(node *li){
+    if(li != NULL){
+        printFunc(li->val);printf(" ");
+        printNodeRecur(li->next);
+    }
+}
+void printNodeBackRecur(node *li){
+    if(li != NULL){
+        printNodeBackRecur(li->next);
+        printFunc(li->val);printf(" ");
+    }
+}
 void printNode(node *li){
     node *curr = li;
-    if(li == NULL)
-        return;
-    do{
+    while(curr != NULL){
         printFunc(curr->val);printf(" ");
         curr = curr->next;
-    }while(curr != li);
+    }
 }
 void printNodeBack(node *li){
-    if(li == NULL)
-        return;
-    node *curr  = li->back;
-    do{
+    node *curr = getEndNode(li);
+    while(curr != NULL){
         printFunc(curr->val);printf(" ");
         curr = curr->back;
-    }while(curr != li->back);
-
+    }
 }
 void pushFront(node **li, T val){
     node *newNode = (node *)malloc(sizeof(struct node));
     newNode->val = val;
-    if(*li == NULL){
-        newNode->next = newNode;
-        newNode->back = newNode;
-    }
-    else if((*li)->next == *li){
-        (*li)->next = newNode;
+    newNode->next = *li;
+    newNode->back = NULL;
+    if(*li != NULL)
         (*li)->back = newNode;
-        newNode->next = *li;
-        newNode->back = *li;
-    }
-    else{
-        node *endNode = getEndNode(*li);
-        newNode->next = *li;
-        (*li)->back = newNode;
-        newNode->back = endNode;
-        endNode->next = newNode;
-    }
     *li = newNode;
 }
 void pushBack(node **li, T val){
     if(*li == NULL)
         pushFront(li, val);
-    else if((*li)->next == *li){
-        node *newNode = (node *)malloc(sizeof(struct node));
-        newNode->val = val;
-        (*li)->next = newNode;
-        (*li)->back = newNode;
-        newNode->next = *li;
-        newNode->back = *li;
-    }
     else{
         node *newNode = (node *)malloc(sizeof(struct node));
         newNode->val = val;
         node *currEnd = getEndNode(*li);
         newNode->back = currEnd;
-        newNode->next = *li;
+        newNode->next = NULL;
         currEnd->next = newNode;
-        (*li)->back = newNode;
     }
 }
 T popFront(node **li){
-    T val;
     if(*li == NULL)
         return;
-    else if((*li)->next == *li){
-        val = (*li)->val;
-        free(*li);
-        *li = NULL;
-        return val;
-    }
     else{
         node *curr = *li;
-        node *endNode = getEndNode(*li);
         T temp = (*li)->val;
         *li = (*li)->next;
-        (*li)->back = endNode;
-        endNode->next = *li;
+        if((*li) != NULL)
+            (*li)->back = NULL;
         free(curr);
         return temp;
     }
 }
 T popBack(node **li){
-    T val;
     if(*li == NULL)
         return;
-    else if((*li)->next == *li){
-        val = (*li)->val;
-        free(*li);
-        *li = NULL;
-        return val;
-    }
     else{
         node *curr = getEndNode(*li);
-        node *prev = curr->back;
         T temp = curr->val;
-        prev->next = *li;
-        (*li)->back = prev;
-        free(curr);
+        if(curr->back != NULL){
+            node *newEnd = curr->back;
+            newEnd->next = NULL;
+            free(curr);
+        }
+        else
+            popFront(li);
         return temp;
     }
 }
@@ -194,11 +165,18 @@ void insertionAfter(node **li, int pos, T val){
         node *curr = getNode(*li, pos);
         node *newNode = (node *)malloc(sizeof(struct node));
         newNode->val = val;
-        node *next = curr->next;
-        next->back = newNode;
-        newNode->next = next;
-        newNode->back = curr;
-        curr->next = newNode;
+        if(curr->next == NULL){
+            newNode->back = curr;
+            newNode->next = NULL;
+            curr->next = newNode;
+        }
+        else{
+            node *next = curr->next;
+            next->back = newNode;
+            newNode->next = next;
+            newNode->back = curr;
+            curr->next = newNode;
+        }
     }
 }
 void deletion(node **li, int pos){
@@ -210,10 +188,19 @@ void deletion(node **li, int pos){
         popFront(li);
     else{
         node *curr = getNode(*li, pos);
-        node *prev = curr->back;
-        prev->next = curr->next;
-        curr->next->back = prev;
-        free(curr);
+        if(curr->next == NULL){
+            node *prev = curr->back;
+            prev->next = NULL;
+            free(curr);
+        }
+        else{
+            node *prev = curr->back;
+            node *next = curr->next;
+            prev->next = curr->next;
+            next->back = prev;
+            free(curr);
+        }
     }
 }
-#endif // GENERIC_CIR_LIST_H_INCLUDED
+
+#endif // LIST_H_INCLUDED

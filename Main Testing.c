@@ -1,9 +1,9 @@
 #include<stdio.h>
 
-//#include"Recursive_Forward_List.h"
-#include"Generic_Forward_List.h"
-//#include"Generic_List.h"
-//#include"Generic_Cir_List.h"
+#include"src/Recursive_Forward_List.h"
+//#include"src/Forward_List.h"
+//#include"src/List.h"
+//#include"src/Cir_List.h"
 
 
 void printTest(node *list){
@@ -87,79 +87,79 @@ int main()
     deletion(&list, 3);
     printTest(list);printf("\n");
 
-    printf("\nTest Swapping List\n");
-    printf("Before\n");
-    printTest(list);
-    printf("\nAfter\n");
-    swapNode(&list, 0, 1);
-    printTest(list);
-    swapNode(&list, 0, 1);
-    printf("Before\n");
-    printTest(list);
-    printf("\nAfter\n");
-    swapNode(&list, 0, 2);
-    printTest(list);
-    swapNode(&list, 0, 2);
-
-    printf("swap through all\n");
-    for(int i = 0; i < getLen(list); ++i){
-        swapNode(&list, 0, i);
-        printTest(list);
-    }
-    printf("swap adjacent all\n");
-    for(int i = 1; i < getLen(list); ++i){
-        swapNode(&list, i-1, i);
-        printTest(list);
-    }
-    printf("swap one node between all\n");
-    for(int i = 2; i < getLen(list); ++i){
-        swapNode(&list, i-2, i);
-        printTest(list);
-    }
-//    for(;;)
-//        swapNode(&list, rand()%testSize, rand()%testSize);
-
-    printf("\nTest Reverse List\n");
-    printf("Before\n");
-    printTest(list);
-    printf("\nAfter\n");
-    reverseList(&list);
-    printTest(list);
-
-    destroyList(&list);
-    printTest(list);
-    reverseList(&list);
-    printTest(list);
-    pushFront(&list, 5);
-    reverseList(&list);
-    printTest(list);
-    pushFront(&list, 10);
-    printTest(list);
-    reverseList(&list);
-    printTest(list);
-    pushFront(&list, 17);
-    printTest(list);
-    reverseList(&list);
-    printTest(list);
-    printf("\nend of testing reverse list\n");
-
-
-    printf("\nEND OF TESTING, NOW YOU MAY PROCEED TO THE ERROR TESTING\n");
-
-    /**
-     useful shortcut:
-        comment         : ctrl + shift + c
-        unccomment      : ctrl + shift + x
-        build and run   : F9 (+fn key for some laptops)
-    **/
-    ///test these one-by-one. and expected result is to print error and exit from the program
-    insertionAfter(&list, getLen(list)+10, 100);
-    insertionAfter(&list, getLen(list), 100);
-    insertion(&list, getLen(list), 100);
-    insertionAfter(&list, -1, 100);
-    insertion(&list,-1, 100);
-    deletion(&list, getLen(list));
-    deletion(&list, -1);
+//    printf("\nTest Swapping List\n");
+//    printf("Before\n");
+//    printTest(list);
+//    printf("\nAfter\n");
+//    swapNode(&list, 0, 1);
+//    printTest(list);
+//    swapNode(&list, 0, 1);
+//    printf("Before\n");
+//    printTest(list);
+//    printf("\nAfter\n");
+//    swapNode(&list, 0, 2);
+//    printTest(list);
+//    swapNode(&list, 0, 2);
+//
+//    printf("swap through all\n");
+//    for(int i = 0; i < getLen(list); ++i){
+//        swapNode(&list, 0, i);
+//        printTest(list);
+//    }
+//    printf("swap adjacent all\n");
+//    for(int i = 1; i < getLen(list); ++i){
+//        swapNode(&list, i-1, i);
+//        printTest(list);
+//    }
+//    printf("swap one node between all\n");
+//    for(int i = 2; i < getLen(list); ++i){
+//        swapNode(&list, i-2, i);
+//        printTest(list);
+//    }
+////    for(;;)
+////        swapNode(&list, rand()%testSize, rand()%testSize);
+//
+//    printf("\nTest Reverse List\n");
+//    printf("Before\n");
+//    printTest(list);
+//    printf("\nAfter\n");
+//    reverseList(&list);
+//    printTest(list);
+//
+//    destroyList(&list);
+//    printTest(list);
+//    reverseList(&list);
+//    printTest(list);
+//    pushFront(&list, 5);
+//    reverseList(&list);
+//    printTest(list);
+//    pushFront(&list, 10);
+//    printTest(list);
+//    reverseList(&list);
+//    printTest(list);
+//    pushFront(&list, 17);
+//    printTest(list);
+//    reverseList(&list);
+//    printTest(list);
+//    printf("\nend of testing reverse list\n");
+//
+//
+//    printf("\nEND OF TESTING, NOW YOU MAY PROCEED TO THE ERROR TESTING\n");
+//
+//    /**
+//     useful shortcut:
+//        comment         : ctrl + shift + c
+//        unccomment      : ctrl + shift + x
+//        build and run   : F9 (+fn key for some laptops)
+//    **/
+//    ///test these one-by-one. and expected result is to print error and exit from the program
+//    insertionAfter(&list, getLen(list)+10, 100);
+//    insertionAfter(&list, getLen(list), 100);
+//    insertion(&list, getLen(list), 100);
+//    insertionAfter(&list, -1, 100);
+//    insertion(&list,-1, 100);
+//    deletion(&list, getLen(list));
+//    deletion(&list, -1);
 
     return 0;
 }

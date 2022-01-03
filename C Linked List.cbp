@@ -31,10 +31,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="src/C_Forward_List_Macro.h" />
-		<Unit filename="src/Generic_Cir_List.h" />
-		<Unit filename="src/Generic_Forward_List.h" />
-		<Unit filename="src/Generic_Forward_List2.h" />
-		<Unit filename="src/Generic_List.h" />
+		<Unit filename="src/Cir_List.h" />
+		<Unit filename="src/Forward_List.h" />
+		<Unit filename="src/List.h" />
 		<Unit filename="src/Recursive_Forward_List.h" />
 		<Unit filename="stack.h">
 			<Option target="&lt;{~None~}&gt;" />

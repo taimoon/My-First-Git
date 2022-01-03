@@ -1,8 +1,6 @@
-#ifndef GENERIC_FORWARD_LIST_H_INCLUDED
-#define GENERIC_FORWARD_LIST_H_INCLUDED
-/**
-testing git
-**/
+#ifndef FORWARD_LIST_H_INCLUDED
+#define FORWARD_LIST_H_INCLUDED
+
 #include <stdlib.h>
 #include<stdio.h>
 typedef char T;
@@ -272,4 +270,4 @@ void swapNode(node **li, int pos1, int pos2){
         }
     }
 }
-#endif // GENERIC_FORWARD_LIST_H_INCLUDED
+#endif // FORWARD_LIST_H_INCLUDED
