@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1641040291 source:c:\programming\data structure and algorithm\linked list\c linked list\main testing.c
+	<stdio.h>
+	"Generic_Forward_List.h"
+
+1637419288 c:\programming\data structure and algorithm\linked list\c linked list\singly linked list.h
+	<stdlib.h>
+	<stdio.h>
+
+1637420211 c:\programming\data structure and algorithm\linked list\c linked list\forward_list.h
+	<stdlib.h>
+	<stdio.h>
+
+1637458072 c:\programming\data structure and algorithm\linked list\c linked list\list.h
+	<stdlib.h>
+	<stdio.h>
+
+1637469923 c:\programming\data structure and algorithm\linked list\c linked list\cir_list.h
+	<stdlib.h>
+	<stdio.h>
+
+1637545775 source:c:\programming\data structure and algorithm\linked list\c linked list\second testing.c
+	"Polish_Notation.h"
+	<string.h>
+
+1637543492 c:\programming\data structure and algorithm\linked list\c linked list\stack.h
+	<stdlib.h>
+	<stdio.h>
+
+1637546032 c:\programming\data structure and algorithm\linked list\c linked list\polish_notation.h
+	"string.h"
+	"stack.h"
+
+1639445308 c:\programming\data structure and algorithm\linked list\c linked list\generic_list.h
+	<stdlib.h>
+	<stdio.h>
+
+1639125188 c:\programming\data structure and algorithm\linked list\c linked list\generic_cir_list.h
+	<stdlib.h>
+	<stdio.h>
+
+1641115108 c:\programming\data structure and algorithm\linked list\c linked list\generic_forward_list.h
+	<stdlib.h>
+	<stdio.h>
+
+1639455174 c:\programming\data structure and algorithm\linked list\c linked list\generic_forward_list.c
+
+1639467717 c:\programming\data structure and algorithm\linked list\c linked list\recursive_forward_list.h
+	<stdlib.h>
+	<stdio.h>
+
