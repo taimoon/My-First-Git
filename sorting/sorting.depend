@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1639916703 source:c:\programming\data structure and algorithm\sorting\main testing.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	"Sort Algorithm.h"
+
+1639916815 c:\programming\data structure and algorithm\sorting\sort algorithm.h
+	<stdlib.h>
+
