@@ -21,14 +21,14 @@
 		</Compiler>
 		<Unit filename="Main Testing.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Polish_Notation.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Second Testing.c">
 			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="src/C_Forward_List_Macro.h" />
 		<Unit filename="src/Cir_List.h" />
