@@ -202,10 +202,10 @@ void gMergeSort(void *arr, size_t len, size_t elemSize,
                  int(*cmp)(const void*, const void*)){
     gMergeSortReccur(arr, 0, len, elemSize, cmp);
 }
-//l=left, r=right
+//l=left, r=right, arr[l..r]
 int Partition(int arr[], int l, int r){
     int i = l-1;
-    int p = r/2;
+    int p = r;
     int pivot = arr[p];
     for(int j = l; j < r; ++j)
         if(arr[j] <= pivot)
@@ -213,12 +213,15 @@ int Partition(int arr[], int l, int r){
     swapping(&arr[i+1], &arr[p]);
     return i+1;
 }
-void PartitionSort(int arr[], int l, int r){
+void PartitionSortRecur(int arr[], int l, int r){
     if(l < r){
         int p = Partition(arr, l, r);
-        PartitionSort(arr, l, p-1);
-        PartitionSort(arr, p+1, r);
+        PartitionSortRecur(arr, l, p-1);
+        PartitionSortRecur(arr, p+1, r);
     }
+}
+void PartitionSort(int arr[], int len){
+    PartitionSortRecur(arr, 0, len-1);
 }
 //arr[l..r]
 int gPartition(void* arr, int l, int r, size_t elemSize, int (*cmp)(const void*, const void*)){

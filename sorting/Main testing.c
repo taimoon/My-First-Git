@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<limits.h>
 #include"Sort Algorithm.h"
-typedef unsigned char T;
+typedef int T;
 void printGenericArr(const void *arr, int len, size_t size,
                      void (*printFunc)(const void *val)){
     for(int i = 0; i < len; ++i)
@@ -26,42 +26,17 @@ void mainTesting(){
     //size_t len = USHRT_MAX;
     size_t len = 13; //12 is viable number of elements for random sort works
     T arr[len];
-
-//    for(;;){
-//        arrRandAssign(arr, len);
-//        gMergeSort(arr, len, sizeof(int), comp);
-//        checkSorted(arr, len);
-//    }
     arrRandAssign(arr, len);
     printf("len=%d\n", sizeof(arr)/sizeof(arr[0]));
-    //printGenericArr(arr, len, sizeof(arr[0]), printFunc);printf("\n");
-    gRandomSort(arr, len, sizeof(arr[0]), comp);
-    //printGenericArr(arr, len, sizeof(arr[0]), printFunc);
+    printGenericArr(arr, len, sizeof(arr[0]), printFunc);printf("\n");
+    PartitionSort(arr, len);
+    //gRandomSort(arr, len, sizeof(arr[0]), comp);
+    printGenericArr(arr, len, sizeof(arr[0]), printFunc);
     printf("\nsorted=%d", checkSorted(arr, len, sizeof(arr[0]), comp));
     printf("\n%d\n", gBinarySearch(&arr[4], arr, len, sizeof(arr[0]), comp));
-
-
 }
-void scratch(){
-    int a = 10;
-    void *temp = a;
-    printf("%d", a==(int)temp);
-    printf("\n%p", &temp);
-    printf("\n%p", &a);
-
-}
-void void1(void* a){//void* means no type
-    printf("%d", (int *)a);
-    a += 10;
-    printf("\n%d\n", (int *)a);
-}
-void void2(void* *a){//void* means no type
-    printf("scratch3\n");
-    printf("%d\n", *(int *)a);
-    *a += 10;
-}
-
-char main(){
+int main(){
     mainTesting();
+    system("PAUSE");
     return 0;
 }
